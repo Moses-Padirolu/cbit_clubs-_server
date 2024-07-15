@@ -44,6 +44,8 @@ mongoose.connect('mongodb+srv://moses:4sHBmhoEMq4YKePr@cluster0.fdpmdnc.mongodb.
 app.post("/auth", async (req, res) => {
   try {
     const { name, password } = req.body;
+
+    console.log("auth",name,password);
     const existingUser = await ClubMember.findOne({ name });
     if (existingUser.passcode == password) {
       res.json(1);
@@ -140,5 +142,5 @@ app.delete("/deleteApplication/:id", (req, res) => {
 });
 
 app.listen(3001, () => {
-  console.log("Server is running");
+  console.log("Server is running on port 3001");
 });
